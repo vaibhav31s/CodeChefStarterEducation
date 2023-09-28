@@ -1,4 +1,4 @@
-package com.company.Starter57.D;
+package com.company.Starter67.D;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

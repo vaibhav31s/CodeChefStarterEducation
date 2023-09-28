@@ -1,4 +1,4 @@
-package com.company.Starter57.B;
+package com.company.Starter58.B;
 // Todays wether is love // But life is sad
 // looking at weather with songs pluged in my ear
 // Less go
@@ -23,7 +23,16 @@ class B
         {
             st = new StringTokenizer(infile.readLine());
             int N = Integer.parseInt(st.nextToken());
+
             int[] arr = readArr(N, infile, st);
+
+
+            HashMap<Integer, Integer> map = new HashMap<>();
+
+            for(int x : arr){
+                map.put(x, map.getOrDefault(x,0)+1);
+            }
+
 
 
         }

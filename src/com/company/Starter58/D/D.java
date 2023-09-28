@@ -1,4 +1,4 @@
-package com.company.Starter57.C;
+package com.company.Starter58.D;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -8,27 +8,22 @@ import java.util.*;
 
 import static java.lang.System.out;
 
-class C {
-   public static void main(String[] args) {
+
+class D {
+
+       public static void main(String[] args) {
        FastScanner sc = new FastScanner();
        int t = sc.nextInt();
-       while(t-- > 0){
-               int  n = sc.nextInt();
-               int k = sc.nextInt();
-               long sum  = 0;
-               for(int i = 1; i <= k; i++){
-                   sum += i;
-               }
-               if(sum > n) no();
-               else yes();
-
+       while(t-- > 0) {
        }
+
+
    }
-   private static void no() {
+       private static void no() {
        out.println("No");
    }
 
-   private static void yes() {
+       private static void yes() {
        out.println("Yes");
    }
 

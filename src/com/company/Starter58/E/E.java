@@ -1,4 +1,4 @@
-package com.company.Starter57.A;
+package com.company.Starter58.E;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -8,33 +8,22 @@ import java.util.LinkedHashSet;
 
 import static java.lang.System.out;
 
-class A {
-   public static void main(String[] args) {
+public class E {
+    public static void main(String[] args) {
        FastScanner sc = new FastScanner();
-       int t = sc.nextInt();
-       while(t-- > 0){
-               int n = sc.nextInt();
-               HashSet<Integer> set = new LinkedHashSet<>();
-               for(int i = 0; i <n; i++){
-                   set.add(sc.nextInt());
-               }
-               int m = sc.nextInt();
-               for(int i = 0; i < m ; i++){
-                   int k = sc.nextInt();
-                   set.remove(k);
-               }
-               for(int x : set)
-                   out.print(x + " ");
-           out.println();
-       }
-   }
-   private static void no() {
-       out.println("No");
-   }
+        int t = sc.nextInt();
+        while(t-- > 0){
+            int n = sc.nextInt();
 
-   private static void yes() {
-       out.println("Yes");
-   }
+        }
+    }
+    private static void no() {
+        out.println("No");
+    }
+
+    private static void yes() {
+        out.println("Yes");
+    }
 }
 
 class FastScanner

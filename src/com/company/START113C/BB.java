@@ -1,99 +1,51 @@
-
+package com.company.START113C;
 
 import java.io.BufferedInputStream;import java.io.File;import java.io.FileInputStream;import java.io.InputStream;import java.util.*;import static java.lang.System.out;import java.io.*;import java.util.Arrays;
 
-class D {
+class BB {
     static String INPUT = """
-            30
-            1
-            2
             3
-            4
-            5
-            6
-            7
-            8
-            9
-            10
-            11
-            12
-            13
-            14
-            15
-            16
-            17
-            18
-            19
-            20
-            21 22 23 24 25 26 27 28 29 30
+            1
+            R
+            2
+            PS
+            3
+            RSP
             """;
 
     static boolean oj = System.getProperty("ONLINE_JUDGE") != null;    static InputStream is = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());    static FastScanner sc = new FastScanner(is);
-    static HashSet<Integer> sizes= new HashSet<>();
+
     public static void main(String[] args) {
         int t = sc.nextInt();
         outer:
         while(t-- > 0){
-            long n = sc.nextLong();
-//sizes.clear();
-//            int cur = go(n,new HashSet<>());
-//
-//            out.println( " " + sizes.size());
-            out.println(Math.abs((long)go1(n)));
-        }
-    }
-    private static long evaluateExpression(long n) {
-        return (long) (Math.pow(-1, n) * sumSquareCharacteristic(n));
-    }
-    public static double go1(long n) {
-        long sqrtN = (long) Math.floor(Math.sqrt(n));
+            int n = sc.nextInt();
+//            int[] arr = readIntArray(sc, n);
+            String s = sc.next();
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < s.length(); i++) sb.append("P");
+            int total = n / 2 + 1;
 
-        double term1 = sqrtN * Math.pow(-1, n) / 2.0;
-        double term2 = (Math.pow(-1, sqrtN + 1) + 1) / 4.0;
+            for (int i = 0; i < n; ++i)
+                if (s.charAt(i) == 'R')  total--;
 
-        return term1 - term2;
-    }
 
-    private static double sumSquareCharacteristic(long n) {
-        double sum = 0;
-        for (long i = 1; i <= Math.ceil(n / 2.0); i++) {
-            sum += squareCharacteristic(n + 2 - 2 * i);
-        }
-        return sum;
-    }
 
-    private static long squareCharacteristic(long m) {
-        // Implement the square characteristic function (A010052)
-        return m * m;
-    }
-    private static long go(long n) {
-        double e = Math.floor(sqrt(n)) * Math.pow(-1, n/2) - (Math.pow(-1, Math.floor(Math.sqrt(n))+1) + 1) /4;
-
-        // Convert the result to long
-        return (long)e;
-    }
-
-    static int  go(int n, HashSet<Integer> set) {
-        if(n < 0) return 0;
-        if(n == 0) {
-            for(int x : set){
-                if(x % 2 ==0) return 0;
+            for (int i = n - 1; i >= 0; --i) {
+                if (total > 0 && (s.charAt(i) == 'P' || s.charAt(i) == 'S')) {
+                    if(s.charAt(i) == 'P') {
+                        sb.setCharAt(i, 'S');
+                    } else {
+                        sb.setCharAt(i, 'R');
+                    }
+                    --total;
+                }
             }
-//            out.println(set);
-            sizes.add(set.size());
-            return 1;
+
+            out.println(sb);
         }
-
-        for(int i = 1; i <= n; i++) {
-            if(set.contains(i)) continue;
-            set.add(i);
-
-            go(n-i, set);
-
-            set.remove(i);
-        }
-        return 1;
     }
+
 
 
     private static int[] readIntArray(FastScanner sc, int n) {        int[] arr = new int[n];        for (int i = 0; i < n; i++) arr[i] = sc.nextInt();        return arr;    }    private static long[] readLongArray(FastScanner sc, int n) {        long[] arr = new long[n];        for (int i = 0; i < n; i++) arr[i] = sc.nextLong();        return arr;    } private static String[] readStringArray(FastScanner sc, int n) {        String[] arr = new String[n];        for (int i = 0; i < n; i++) arr[i] = sc.next();        return arr;    } private static int[][] read2dIntArray(FastScanner sc, int n, int m) { int[][] arr = new int[n][m]; for (int i = 0; i < n; i++) { arr[i] = readIntArray(sc, m); } return arr; } private static long[][] read2dLongArray(FastScanner sc, int n, int m) { long[][] arr = new long[n][m]; for (int i = 0; i < n; i++) { arr[i] = readLongArray(sc, m); } return arr; } private static String[][] read2dStringArray(FastScanner sc, int n, int m) { String[][] arr = new String[n][m]; for (int i = 0; i < n; i++) { arr[i] = readStringArray(sc, m); } return arr; }
@@ -106,7 +58,6 @@ class D {
     public static void push(HashMap<Integer, Integer> map, int k, int v) {        if (!map.containsKey(k))            map.put(k, v);        else            map.put(k, map.get(k) + v);    }    public static void pull(HashMap<Integer, Integer> map, int k, int v) {        int lol = map.get(k);        if (lol == v)            map.remove(k);        else            map.put(k, lol - v);    }    public static void push(HashMap<String, Integer> map, String k, int v) {        if (!map.containsKey(k))            map.put(k, v);        else            map.put(k, map.get(k) + v);    }    public static void pull(HashMap<String, Integer> map, String k, int v) {        int lol = map.get(k);        if (lol == v)            map.remove(k);        else            map.put(k, lol - v);    }    public static void push(HashMap<Long, Integer> map, Long k, int v) {        if (!map.containsKey(k))            map.put(k, v);        else            map.put(k, map.get(k) + v);    }    public static void pull(HashMap<Long, Integer> map, Long k, int v) {        int lol = map.get(k);        if (lol == v)            map.remove(k);        else            map.put(k, lol - v);    }
     public static int[] compress(int[] arr) {        ArrayList<Integer> ls = new ArrayList<Integer>();        for (int x : arr)            ls.add(x);        Collections.sort(ls);        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();        int boof = 1; /* min value */        for (int x : ls)            if (!map.containsKey(x))                map.put(x, boof++);        int[] brr = new int[arr.length];        for (int i = 0; i < arr.length; i++)            brr[i] = map.get(arr[i]);        return brr;    }
     public static long[][] multiply(long[][] left, long[][] right) {        long MOD = 1000000007L;        int N = left.length;        int M = right[0].length;        long[][] res = new long[N][M];        for (int a = 0; a < N; a++)            for (int b = 0; b < M; b++)                for (int c = 0; c < left[0].length; c++) {                    res[a][b] += (left[a][c] * right[c][b]) % MOD;                    if (res[a][b] >= MOD)                        res[a][b] -= MOD;                }        return res;    }    public static long[][] power(long[][] grid, long pow) {        long[][] res = new long[grid.length][grid[0].length];        for (int i = 0; i < res.length; i++)            res[i][i] = 1L;        long[][] curr = grid.clone();        while (pow > 0) {            if ((pow & 1L) == 1L)                res = multiply(curr, res);            pow >>= 1;            curr = multiply(curr, curr);        }        return res;    }
-    public static long sqrt(long x) {long start = 0, end = (long) 3e9, ans = 1; while (start <= end) {long mid = (start + end) / 2; if (mid * mid <= x) {ans = mid;start = mid + 1;} else end = mid - 1;} return ans;}
     private static class FastScanner {              private final int BS = 1 << 16;        private final char NC = (char) 0;        private final byte[] buf = new byte[BS];        private int bId = 0, size = 0;        private char c = NC;        private double cnt = 1;        private BufferedInputStream in;        public FastScanner() {            in = new BufferedInputStream(System.in, BS);        }  public FastScanner(InputStream ff) {            in = new BufferedInputStream(ff);        }        public FastScanner(String s) {            try {                in = new BufferedInputStream(new FileInputStream(new File(s)), BS);            } catch (Exception e) {                in = new BufferedInputStream(System.in, BS);            }        }        private char getChar() {            while (bId == size) {                try {                    size = in.read(buf);                } catch (Exception e) {                    return NC;                }                if (size == -1) return NC;                bId = 0;            }            return (char) buf[bId++];        }        public int nextInt() {            return (int) nextLong();        }        public int[] nextInts(int N) {            int[] res = new int[N];            for (int i = 0; i < N; i++) {                res[i] = (int) nextLong();            }            return res;        }        public long[] nextLongs(int N) {            long[] res = new long[N];            for (int i = 0; i < N; i++) {                res[i] = nextLong();            }            return res;        }        public long nextLong() {            cnt = 1;            boolean neg = false;            if (c == NC) c = getChar();            for (; (c < '0' || c > '9'); c = getChar()) {                if (c == '-') neg = true;            }            long res = 0;            for (; c >= '0' && c <= '9'; c = getChar()) {                res = (res << 3) + (res << 1) + c - '0';                cnt *= 10;            }            return neg ? -res : res;        }        public double nextDouble() {            double cur = nextLong();            return c != '.' ? cur : cur + nextLong() / cnt;        }        public double[] nextDoubles(int N) {            double[] res = new double[N];            for (int i = 0; i < N; i++) {                res[i] = nextDouble();            }            return res;        }        public String next() {            StringBuilder res = new StringBuilder();            while (c <= 32) c = getChar();            while (c > 32) {                res.append(c);                c = getChar();            }            return res.toString();        }        public String nextLine() {            StringBuilder res = new StringBuilder();            while (c <= 32) c = getChar();            while (c != '\n') {                res.append(c);                c = getChar();            }            return res.toString();        }        public boolean hasNext() {            if (c > 32) return true;            while (true) {                c = getChar();                if (c == NC) return false;                else if (c > 32) return true;            }        }    }private void tr(Object... o) { if(!oj)System.out.println(Arrays.deepToString(o));
     }
-}
+  }

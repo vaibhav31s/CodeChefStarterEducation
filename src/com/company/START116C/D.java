@@ -1,31 +1,15 @@
+package com.company.START116C;
 
 
-import java.io.BufferedInputStream;import java.io.File;import java.io.FileInputStream;import java.io.InputStream;import java.util.*;import static java.lang.System.out;import java.io.*;import java.util.Arrays;
+
+import java.io.BufferedInputStream;import java.io.File;import java.io.FileInputStream;import java.io.InputStream;
+import java.math.BigInteger;
+import java.util.*;import static java.lang.System.out;import java.io.*;import java.util.Arrays;
 
 class D {
     static String INPUT = """
-            30
-            1
-            2
-            3
-            4
-            5
-            6
-            7
-            8
-            9
             10
-            11
-            12
-            13
-            14
-            15
-            16
-            17
-            18
-            19
-            20
-            21 22 23 24 25 26 27 28 29 30
+            11 22 33 55 66 77 88 99 110
             """;
 
     static boolean oj = System.getProperty("ONLINE_JUDGE") != null;    static InputStream is = oj ? System.in : new ByteArrayInputStream(INPUT.getBytes());    static FastScanner sc = new FastScanner(is);
@@ -35,18 +19,18 @@ class D {
         outer:
         while(t-- > 0){
             long n = sc.nextLong();
-//sizes.clear();
-//            int cur = go(n,new HashSet<>());
-//
-//            out.println( " " + sizes.size());
-            out.println(Math.abs((long)go1(n)));
+            long result = (long) Math.abs(go1((double) n));
+            System.out.println(result + " " + a(n));
         }
     }
-    private static long evaluateExpression(long n) {
-        return (long) (Math.pow(-1, n) * sumSquareCharacteristic(n));
+    public static long a(long n) {
+
+       long s = sqrt(n);
+       if((n&1) != 0) s++;
+       return s/2;
     }
-    public static double go1(long n) {
-        long sqrtN = (long) Math.floor(Math.sqrt(n));
+    public static double go1(Double n) {
+        double sqrtN =  Math.floor(Math.sqrt(n));
 
         double term1 = sqrtN * Math.pow(-1, n) / 2.0;
         double term2 = (Math.pow(-1, sqrtN + 1) + 1) / 4.0;
